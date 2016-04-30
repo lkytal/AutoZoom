@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Utilities;
 using System;
+using System.Windows;
 using System.ComponentModel.Composition;
 
 namespace AutoZoom
@@ -10,6 +11,7 @@ namespace AutoZoom
 	[TextViewRole("ZOOMABLE")]
 	internal class AutoZoomProvider : IWpfTextViewCreationListener
 	{
+		IWpfTextView TextView;
 		public AutoZoomProvider()
 		{
 		}
@@ -21,7 +23,15 @@ namespace AutoZoom
 
 		public void TextViewCreated(IWpfTextView textView)
 		{
+			this.TextView = textView;
+
+			textView.VisualElement.Loaded += VisualElement_Loaded;
 			textView.GotAggregateFocus += new EventHandler(this.OnTextViewGotAggregateFocus);
+		}
+
+		private void VisualElement_Loaded(object sender, RoutedEventArgs e)
+		{
+			this.TextView.ZoomLevel = 91;
 		}
 	}
 }
