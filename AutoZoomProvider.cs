@@ -11,31 +11,37 @@ namespace AutoZoom
 	[TextViewRole("ZOOMABLE")]
 	internal class AutoZoomProvider : IWpfTextViewCreationListener
 	{
-		bool Changed = false;
-		public AutoZoomProvider()
-		{
-		}
+		private bool Changed = false;
+		private IWpfTextView ThisTextView = null;
 
 		private void OnTextViewGotAggregateFocus(object sender, EventArgs e)
 		{
 			if (!Changed)
 			{
 				Changed = true;
-				(sender as IWpfTextView).ZoomLevel = 91;
+
+				IWpfTextView wpfTextView = sender as IWpfTextView;
+				if (wpfTextView != null) wpfTextView.ZoomLevel = 91;
+
+				ThisTextView.GotAggregateFocus -= this.OnTextViewGotAggregateFocus;
 			}
 		}
 
 		public void TextViewCreated(IWpfTextView textView)
 		{
+			ThisTextView = textView;
 			textView.VisualElement.Loaded += VisualElement_Loaded;
-			textView.GotAggregateFocus += new EventHandler(this.OnTextViewGotAggregateFocus);
+			textView.GotAggregateFocus += this.OnTextViewGotAggregateFocus;
 		}
 
 		private void VisualElement_Loaded(object sender, RoutedEventArgs e)
 		{
-			System.Threading.Thread.Sleep(40);
+			System.Threading.Thread.Sleep(50);
 
-			(sender as IWpfTextView).ZoomLevel = 91;
+			IWpfTextView wpfTextView = sender as IWpfTextView;
+			if (wpfTextView != null) wpfTextView.ZoomLevel = 91;
+
+			ThisTextView.VisualElement.Loaded -= VisualElement_Loaded;
 		}
 	}
 }

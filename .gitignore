@@ -290,3 +290,4 @@ Unicode/
 exe/
 *.pdf
 Key.snk
+*.vsix
