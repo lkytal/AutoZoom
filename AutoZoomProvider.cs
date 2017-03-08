@@ -1,8 +1,8 @@
-using Microsoft.VisualStudio.Text.Editor;
-using Microsoft.VisualStudio.Utilities;
 using System;
 using System.Windows;
 using System.ComponentModel.Composition;
+using Microsoft.VisualStudio.Text.Editor;
+using Microsoft.VisualStudio.Utilities;
 
 namespace AutoZoom
 {
@@ -23,7 +23,7 @@ namespace AutoZoom
 				IWpfTextView wpfTextView = sender as IWpfTextView;
 				if (wpfTextView != null) wpfTextView.ZoomLevel = 91;
 
-				ThisTextView.GotAggregateFocus -= this.OnTextViewGotAggregateFocus;
+				ThisTextView.GotAggregateFocus -= OnTextViewGotAggregateFocus;
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace AutoZoom
 		{
 			ThisTextView = textView;
 			textView.VisualElement.Loaded += VisualElement_Loaded;
-			textView.GotAggregateFocus += this.OnTextViewGotAggregateFocus;
+			textView.GotAggregateFocus += OnTextViewGotAggregateFocus;
 		}
 
 		private void VisualElement_Loaded(object sender, RoutedEventArgs e)
