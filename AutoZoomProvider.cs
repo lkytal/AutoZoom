@@ -11,20 +11,27 @@ namespace AutoZoom
 	[TextViewRole("ZOOMABLE")]
 	internal class AutoZoomProvider : IWpfTextViewCreationListener
 	{
-		private bool Changed = false;
-		private IWpfTextView ThisTextView = null;
+		private IWpfTextView ThisTextView;
+
+		private void SetZoomLevel(object sender)
+		{
+			System.Threading.Thread.Sleep(30);
+
+			if (sender is IWpfTextView wpfTextView) wpfTextView.ZoomLevel = 91;
+		}
 
 		private void OnTextViewGotAggregateFocus(object sender, EventArgs e)
 		{
-			if (!Changed)
-			{
-				Changed = true;
+			ThisTextView.GotAggregateFocus -= OnTextViewGotAggregateFocus;
 
-				IWpfTextView wpfTextView = sender as IWpfTextView;
-				if (wpfTextView != null) wpfTextView.ZoomLevel = 91;
+			SetZoomLevel(sender);
+		}
 
-				ThisTextView.GotAggregateFocus -= OnTextViewGotAggregateFocus;
-			}
+		private void VisualElement_Loaded(object sender, RoutedEventArgs e)
+		{
+			ThisTextView.VisualElement.Loaded -= VisualElement_Loaded;
+
+			SetZoomLevel(sender);
 		}
 
 		public void TextViewCreated(IWpfTextView textView)
@@ -32,16 +39,6 @@ namespace AutoZoom
 			ThisTextView = textView;
 			textView.VisualElement.Loaded += VisualElement_Loaded;
 			textView.GotAggregateFocus += OnTextViewGotAggregateFocus;
-		}
-
-		private void VisualElement_Loaded(object sender, RoutedEventArgs e)
-		{
-			System.Threading.Thread.Sleep(50);
-
-			IWpfTextView wpfTextView = sender as IWpfTextView;
-			if (wpfTextView != null) wpfTextView.ZoomLevel = 91;
-
-			ThisTextView.VisualElement.Loaded -= VisualElement_Loaded;
 		}
 	}
 }
