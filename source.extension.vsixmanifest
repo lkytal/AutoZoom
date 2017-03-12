@@ -1,22 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 	<Metadata>
-		<Identity Id="AutoZoom.Lkytal.d9912923-a646-4146-9430-77bea8337c8d" Version="1.0.0" Language="en-US" Publisher="Lkytal" />
+		<Identity Id="AutoZoom.Lkytal.c422f71e-045a-4699-996b-6e9762b7d6e2" Version="1.0.0" Language="en-US" Publisher="Lkytal" />
 		<DisplayName>AutoZoom</DisplayName>
-		<Description xml:space="preserve">AutoZoom text view to 91% for VS2013, VS2015 and VS2017</Description>
+		<Description xml:space="preserve">AutoZoom for VS2013, 2015 and 2017</Description>
+		<MoreInfo>https://github.com/lkytal/AutoZoom</MoreInfo>
 		<Icon>icon.png</Icon>
+		<Tags>Zoom, AutoZoom</Tags>
 	</Metadata>
 	<Installation>
-		<InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0, 16.0)" />
-		<InstallationTarget Version="[12.0, 16.0)" Id="Microsoft.VisualStudio.Pro" />
+		<InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[12.0,16.0)" />
+		<InstallationTarget Version="[12.0,16.0)" Id="Microsoft.VisualStudio.Pro" />
+		<InstallationTarget Version="[12.0,16.0)" Id="Microsoft.VisualStudio.Enterprise" />
 	</Installation>
 	<Dependencies>
 		<Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+		<Dependency Id="Microsoft.VisualStudio.MPF.12.0" DisplayName="Visual Studio MPF 12.0" d:Source="Installed" Version="[12.0,16.0)" />
 	</Dependencies>
-	<Assets>
-		<Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" d:VsixSubPath="AutoZoom.dll" />
-	</Assets>
 	<Prerequisites>
-		<Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[12.0,16.0)" DisplayName="Visual Studio 核心编辑器" />
+		<Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[12.0,16.0)" DisplayName="Visual Studio core editor" />
 	</Prerequisites>
+	<Assets>
+		<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+		<Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
+	</Assets>
 </PackageManifest>
