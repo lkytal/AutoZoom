@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 	<Metadata>
-		<Identity Id="AutoZoom.Lkytal.c422f71e-045a-4699-996b-6e9762b7d6e2" Version="1.0.0" Language="en-US" Publisher="Lkytal" />
+		<Identity Id="AutoZoom" Version="1.0.0" Language="en-US" Publisher="Lkytal" />
 		<DisplayName>AutoZoom</DisplayName>
 		<Description xml:space="preserve">AutoZoom for VS2013, 2015 and 2017</Description>
 		<MoreInfo>https://github.com/lkytal/AutoZoom</MoreInfo>
