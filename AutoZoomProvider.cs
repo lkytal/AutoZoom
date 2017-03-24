@@ -34,26 +34,34 @@ namespace AutoZoom
 				System.Threading.Thread.Sleep(30);
 
 				wpfTextView.ZoomLevel = GetZoomLevel();
+
+				if (ThisTextView == null)
+				{
+					ThisTextView = sender as IWpfTextView;
+				}
+
+				RemoveEventHandler();
 			}
 		}
 
 		private void RemoveEventHandler()
 		{
-			ThisTextView.GotAggregateFocus -= OnTextViewGotAggregateFocus;
-			ThisTextView.VisualElement.Loaded -= VisualElement_Loaded;
+			if (ThisTextView != null)
+			{
+				ThisTextView.GotAggregateFocus -= OnTextViewGotAggregateFocus;
+				ThisTextView.VisualElement.Loaded -= VisualElement_Loaded;
+			}
 
 			ThisTextView = null;
 		}
 
 		private void OnTextViewGotAggregateFocus(object sender, EventArgs e)
 		{
-			RemoveEventHandler();
 			SetZoomLevel(sender);
 		}
 
 		private void VisualElement_Loaded(object sender, RoutedEventArgs e)
 		{
-			RemoveEventHandler();
 			SetZoomLevel(sender);
 		}
 
