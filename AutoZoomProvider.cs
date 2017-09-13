@@ -21,10 +21,8 @@ namespace AutoZoom
 			{
 				return AutoZoomPackage.OptionsPage.ZoomLevel;
 			}
-			else
-			{
-				return defaultZoomLevel;
-			}
+
+			return defaultZoomLevel;
 		}
 
 		private void SetZoomLevel(object sender)
@@ -37,7 +35,7 @@ namespace AutoZoom
 
 				if (ThisTextView == null)
 				{
-					ThisTextView = sender as IWpfTextView;
+					ThisTextView = (IWpfTextView) sender;
 				}
 
 				RemoveEventHandler();

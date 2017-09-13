@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 	<Metadata>
-		<Identity Id="AutoZoom" Version="1.0.1" Language="en-US" Publisher="Lkytal" />
+		<Identity Id="AutoZoom" Version="1.0.2" Language="en-US" Publisher="Lkytal" />
 		<DisplayName>AutoZoom</DisplayName>
-		<Description xml:space="preserve">AutoZoom for VS2013, 2015 and 2017</Description>
+		<Description xml:space="preserve">AutoZoom editor for VS2013, 2015 and 2017</Description>
 		<MoreInfo>https://github.com/lkytal/AutoZoom</MoreInfo>
-		<Icon>icon.png</Icon>
+		<License>LICENSE.txt</License>
+		<Icon>Resources\icon.png</Icon>
 		<Tags>Zoom, AutoZoom</Tags>
 	</Metadata>
 	<Installation>
