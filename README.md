@@ -2,12 +2,13 @@
 
 <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="noreferrer noopener"><img src="https://img.shields.io/badge/License-CC_BY--SA_4.0-5E81AC.png?style=flat-square"></a>
 
-AutoZoom for the Visual Studio 2013, 2015 and 2017
+AutoZoom for the Visual Studio 2013, 2015, 2017 and 2019
 
 Get AutoZoom from [Visual Studio Gallery](https://marketplace.visualstudio.com/items?itemName=lkytal.AutoZoom)
 
 ## Update Log:
 
+* 1.0.3 : Support VS2019.
 * 1.0.1 : Fix null reference.
 * 1.0.0 : First release.
 
